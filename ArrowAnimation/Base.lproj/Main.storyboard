@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="ufC-wZ-h7g">
+            <objects>
+                <viewController id="vXZ-lx-hvc" customClass="ViewController" customModule="ArrowAnimation" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
+                        <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H4r-8e-epm" customClass="ArrowView" customModule="ArrowAnimation" customModuleProvider="target">
+                                <rect key="frame" x="150" y="150" width="300" height="300"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IvI-oP-tH0">
+                                        <rect key="frame" x="0.0" y="125" width="50" height="50"/>
+                                        <color key="backgroundColor" red="0.40784313729999999" green="0.57254901960000004" blue="0.42352941179999998" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="uz5-Dm-8US"/>
+                                            <constraint firstAttribute="width" constant="50" id="vbt-WN-lgz"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" red="1" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="H4r-8e-epm" secondAttribute="height" multiplier="1:1" id="HPS-IJ-cRK"/>
+                                    <constraint firstItem="IvI-oP-tH0" firstAttribute="leading" secondItem="H4r-8e-epm" secondAttribute="leading" id="Vip-2u-tKx"/>
+                                    <constraint firstAttribute="height" constant="300" id="aDT-2p-fHP"/>
+                                    <constraint firstItem="IvI-oP-tH0" firstAttribute="top" secondItem="H4r-8e-epm" secondAttribute="top" constant="125" id="dta-wI-TTt"/>
+                                    <constraint firstItem="IvI-oP-tH0" firstAttribute="centerY" secondItem="H4r-8e-epm" secondAttribute="centerY" id="iAL-Qg-nLb"/>
+                                    <constraint firstAttribute="trailing" secondItem="IvI-oP-tH0" secondAttribute="trailing" constant="250" id="y9R-8a-jMt"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="aDT-2p-fHP"/>
+                                        <exclude reference="dta-wI-TTt"/>
+                                        <exclude reference="y9R-8a-jMt"/>
+                                    </mask>
+                                </variation>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CUM-mi-jj3">
+                                <rect key="frame" x="16" y="20" width="46" height="30"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="hitMe:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="eQh-rx-H3Z"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="H4r-8e-epm" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="130" id="1kX-83-2Fg"/>
+                            <constraint firstItem="H4r-8e-epm" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="150" id="2TY-oq-xA1"/>
+                            <constraint firstItem="H4r-8e-epm" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="3jg-ul-VX1"/>
+                            <constraint firstItem="H4r-8e-epm" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="150" id="5uI-P2-08m"/>
+                            <constraint firstItem="CUM-mi-jj3" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="BXj-CR-6d2"/>
+                            <constraint firstItem="CUM-mi-jj3" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" id="Ddg-sd-2Wj"/>
+                            <constraint firstItem="H4r-8e-epm" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="130" id="Jbh-B6-TZy"/>
+                            <constraint firstItem="H4r-8e-epm" firstAttribute="height" secondItem="kh9-bI-dsS" secondAttribute="height" multiplier="0.5" id="PuR-mZ-3ax"/>
+                            <constraint firstItem="H4r-8e-epm" firstAttribute="centerY" secondItem="kh9-bI-dsS" secondAttribute="centerY" id="RMh-4x-QcX"/>
+                            <constraint firstItem="H4r-8e-epm" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="130" id="SX9-bb-Nxj"/>
+                            <constraint firstItem="H4r-8e-epm" firstAttribute="centerY" secondItem="kh9-bI-dsS" secondAttribute="centerY" id="Spa-C7-Qil"/>
+                            <constraint firstItem="H4r-8e-epm" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="150" id="Tmt-zl-5SL"/>
+                            <constraint firstItem="H4r-8e-epm" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="130" id="YFd-bq-fAH"/>
+                            <constraint firstItem="H4r-8e-epm" firstAttribute="width" secondItem="kh9-bI-dsS" secondAttribute="width" multiplier="0.5" id="Zgl-Nb-bsV"/>
+                            <constraint firstItem="H4r-8e-epm" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="dDH-D0-GCF"/>
+                            <constraint firstItem="H4r-8e-epm" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="dJG-NE-GTB"/>
+                            <constraint firstItem="H4r-8e-epm" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="150" id="fVk-uQ-aT7"/>
+                            <constraint firstItem="H4r-8e-epm" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="hnk-iZ-dSB"/>
+                            <constraint firstItem="H4r-8e-epm" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="130" id="kQs-j0-bqB"/>
+                            <constraint firstItem="H4r-8e-epm" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="150" id="xYJ-bJ-9Oe"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="1kX-83-2Fg"/>
+                                <exclude reference="2TY-oq-xA1"/>
+                                <exclude reference="3jg-ul-VX1"/>
+                                <exclude reference="5uI-P2-08m"/>
+                                <exclude reference="Jbh-B6-TZy"/>
+                                <exclude reference="PuR-mZ-3ax"/>
+                                <exclude reference="RMh-4x-QcX"/>
+                                <exclude reference="SX9-bb-Nxj"/>
+                                <exclude reference="Tmt-zl-5SL"/>
+                                <exclude reference="YFd-bq-fAH"/>
+                                <exclude reference="dDH-D0-GCF"/>
+                                <exclude reference="dJG-NE-GTB"/>
+                                <exclude reference="fVk-uQ-aT7"/>
+                                <exclude reference="kQs-j0-bqB"/>
+                                <exclude reference="xYJ-bJ-9Oe"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <connections>
+                        <outlet property="arrowView" destination="H4r-8e-epm" id="Yfx-Ty-ddw"/>
+                        <outlet property="helpConstraint" destination="Vip-2u-tKx" id="ag3-uA-iLW"/>
+                        <outlet property="helpView" destination="IvI-oP-tH0" id="Ec5-C0-UdA"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-353" y="269"/>
+        </scene>
+    </scenes>
+</document>
