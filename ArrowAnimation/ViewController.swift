@@ -17,26 +17,26 @@ class ArrowView: UIView
     override func drawRect(rect: CGRect)
     {
         let path = UIBezierPath()
-        
-        let minX = CGRectGetMinX(rect)+offSetX
-        let midY = CGRectGetMidY(rect)+offSetY
-        let maxX = CGRectGetMaxX(rect)
-        let a = offSetX/maxX
-        let sideLen = CGFloat(200.0)
-        
         path.lineWidth = 5.0
         
-        let origin = CGPoint(x: minX, y: midY)
-        let upX = cos(3.14/4*(1+2*a))*sideLen+offSetX
-        let upY = midY - sin(3.14/4*(1+2*a))*sideLen-offSetY
-        let downX = cos(3.14/4*(1+3*a))*sideLen+offSetX
-        let downY = midY + sin(3.14/4*(1+3*a))*sideLen-offSetY
+        let staticOrigin = CGPoint(x: CGRectGetMinX(rect), y: CGRectGetMidY(rect))
+        let origin = CGPoint(x: staticOrigin.x+offSetX, y: staticOrigin.y+offSetY)
         
-        let len = sideLen+a*(maxX-sideLen)
-        let deltaLen = maxX-a*maxX+len*a
-        let radian = a*3*3.14/4
-        let mmX = deltaLen*cos(radian)+offSetX
-        let mmY = deltaLen*sin(radian)+midY-offSetY
+        let a = offSetX/CGRectGetMaxX(rect)
+        
+        let lShort = CGRectGetHeight(rect)/3
+        let lLong = CGRectGetHeight(rect)*2/3
+        
+        let upX = staticOrigin.x + cos(CGFloat(M_PI_4)*(1+2*a))*lShort + offSetX
+        let upY = staticOrigin.y - sin(CGFloat(M_PI_4)*(1+2*a))*lShort + offSetY
+        
+        let lenDown = (lLong-lShort)*a+lShort
+        let downX = staticOrigin.x + cos(CGFloat(M_PI_4)*(1+3*a))*lenDown + offSetX
+        let downY = staticOrigin.y + sin(CGFloat(M_PI_4)*(1+3*a))*lenDown + offSetY
+        
+        let lenMiddle = lLong-(lLong-lShort)*a
+        let mmX = staticOrigin.x + cos(CGFloat(M_PI_4)*3*a)*lenMiddle + offSetX
+        let mmY = staticOrigin.y + sin(CGFloat(M_PI_4)*3*a)*lenMiddle + offSetY
         
         path.moveToPoint(origin)
         path.addLineToPoint(CGPoint(x: upX, y: upY))
@@ -57,11 +57,26 @@ class ViewController: UIViewController {
     @IBOutlet weak var arrowView: ArrowView!
     
     var displayLink: CADisplayLink?
+    let path = UIBezierPath()
     
     override func viewDidLoad()
     {
         super.viewDidLoad()
         helpView.hidden = true
+        
+        let pathLayer = CAShapeLayer()
+        pathLayer.frame = arrowView.bounds
+        pathLayer.backgroundColor = UIColor.clearColor().CGColor
+        
+        let startPoint = CGPoint(x: 0, y: CGRectGetHeight(arrowView.bounds)/2)
+        let endPoint = CGPoint(x: CGRectGetWidth(arrowView.bounds), y: CGRectGetHeight(arrowView.bounds)/2)
+        path.moveToPoint(CGPoint(x: 0, y: CGRectGetHeight(arrowView.bounds)/2))
+        path.addQuadCurveToPoint(endPoint, controlPoint: CGPoint(x: 75, y: 225))
+        pathLayer.path = path.CGPath
+        pathLayer.fillColor = UIColor.clearColor().CGColor
+        pathLayer.strokeColor = UIColor.whiteColor().CGColor
+        pathLayer.lineWidth = 3.0
+        arrowView.layer.addSublayer(pathLayer)
         // Do any additional setup after loading the view, typically from a nib.
     }
 
@@ -79,16 +94,24 @@ class ViewController: UIViewController {
             displayLink = CADisplayLink(target: self, selector: "animate:")
             displayLink?.addToRunLoop(NSRunLoop.mainRunLoop(), forMode: NSDefaultRunLoopMode)
             
-            self.helpConstraint.constant = CGRectGetWidth(self.arrowView.frame)
-            UIView.animateWithDuration(0.8, animations: {self.helpView.layoutIfNeeded()}, completion: { if $0 {self.displayLink?.invalidate()}})
+//            self.helpConstraint.constant = CGRectGetWidth(self.arrowView.frame)
+//            UIView.animateWithDuration(0.8, animations: {self.helpView.layoutIfNeeded()}, completion: { if $0 {self.displayLink?.invalidate()}})
+            let keyFrameAnimation = CAKeyframeAnimation()
+            keyFrameAnimation.keyPath = "position"
+            keyFrameAnimation.path = path.CGPath
+            keyFrameAnimation.duration = 2.0
+            
+            helpView.layer.position = CGPoint(x: CGRectGetWidth(arrowView.bounds), y: CGRectGetHeight(arrowView.bounds)/2)
+            helpView.layer.addAnimation(keyFrameAnimation, forKey: nil)
         }
     }
     
     func animate(dis: CADisplayLink)
     {
         let helpLayer = self.helpView.layer.presentationLayer() as CALayer
-        let helpFrame = helpLayer.valueForKey("frame")?.CGRectValue()
-        arrowView.offSetX = CGRectGetMinX(helpFrame!)
+        let helpCenter = helpLayer.valueForKey("position")?.CGPointValue()
+        arrowView.offSetX = helpCenter!.x
+        arrowView.offSetY = helpCenter!.y-CGRectGetHeight(arrowView.bounds)/2
         arrowView.setNeedsDisplay()
     }
     

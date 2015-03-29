@@ -23,7 +23,7 @@
                                 <rect key="frame" x="150" y="150" width="300" height="300"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IvI-oP-tH0">
-                                        <rect key="frame" x="0.0" y="125" width="50" height="50"/>
+                                        <rect key="frame" x="-25" y="125" width="50" height="50"/>
                                         <color key="backgroundColor" red="0.40784313729999999" green="0.57254901960000004" blue="0.42352941179999998" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="uz5-Dm-8US"/>
@@ -33,17 +33,26 @@
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
+                                    <constraint firstAttribute="height" constant="300" id="9Jq-NK-HA2"/>
+                                    <constraint firstAttribute="centerX" secondItem="IvI-oP-tH0" secondAttribute="centerX" constant="150" id="CkJ-Sn-2no"/>
                                     <constraint firstAttribute="width" secondItem="H4r-8e-epm" secondAttribute="height" multiplier="1:1" id="HPS-IJ-cRK"/>
                                     <constraint firstItem="IvI-oP-tH0" firstAttribute="leading" secondItem="H4r-8e-epm" secondAttribute="leading" id="Vip-2u-tKx"/>
+                                    <constraint firstAttribute="centerY" secondItem="IvI-oP-tH0" secondAttribute="centerY" id="XPE-JZ-dpg"/>
                                     <constraint firstAttribute="height" constant="300" id="aDT-2p-fHP"/>
                                     <constraint firstItem="IvI-oP-tH0" firstAttribute="top" secondItem="H4r-8e-epm" secondAttribute="top" constant="125" id="dta-wI-TTt"/>
                                     <constraint firstItem="IvI-oP-tH0" firstAttribute="centerY" secondItem="H4r-8e-epm" secondAttribute="centerY" id="iAL-Qg-nLb"/>
+                                    <constraint firstAttribute="width" constant="300" id="ihj-cW-rCu"/>
+                                    <constraint firstAttribute="centerX" secondItem="IvI-oP-tH0" secondAttribute="centerX" id="kgW-Kh-364"/>
                                     <constraint firstAttribute="trailing" secondItem="IvI-oP-tH0" secondAttribute="trailing" constant="250" id="y9R-8a-jMt"/>
                                 </constraints>
                                 <variation key="default">
                                     <mask key="constraints">
+                                        <exclude reference="HPS-IJ-cRK"/>
                                         <exclude reference="aDT-2p-fHP"/>
+                                        <exclude reference="Vip-2u-tKx"/>
                                         <exclude reference="dta-wI-TTt"/>
+                                        <exclude reference="iAL-Qg-nLb"/>
+                                        <exclude reference="kgW-Kh-364"/>
                                         <exclude reference="y9R-8a-jMt"/>
                                     </mask>
                                 </variation>
@@ -93,6 +102,7 @@
                                 <exclude reference="SX9-bb-Nxj"/>
                                 <exclude reference="Tmt-zl-5SL"/>
                                 <exclude reference="YFd-bq-fAH"/>
+                                <exclude reference="Zgl-Nb-bsV"/>
                                 <exclude reference="dDH-D0-GCF"/>
                                 <exclude reference="dJG-NE-GTB"/>
                                 <exclude reference="fVk-uQ-aT7"/>
