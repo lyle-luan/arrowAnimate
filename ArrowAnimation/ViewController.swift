@@ -24,8 +24,8 @@ class ArrowView: UIView
         
         let a = offSetX/CGRectGetMaxX(rect)
         
-        let lShort = CGRectGetHeight(rect)/3
-        let lLong = CGRectGetHeight(rect)*2/3
+        let lShort = CGRectGetWidth(rect)*2/3
+        let lLong = CGRectGetWidth(rect)
         
         let upX = staticOrigin.x + cos(CGFloat(M_PI_4)*(1+2*a))*lShort + offSetX
         let upY = staticOrigin.y - sin(CGFloat(M_PI_4)*(1+2*a))*lShort + offSetY
@@ -99,7 +99,7 @@ class ViewController: UIViewController {
             let keyFrameAnimation = CAKeyframeAnimation()
             keyFrameAnimation.keyPath = "position"
             keyFrameAnimation.path = path.CGPath
-            keyFrameAnimation.duration = 2.0
+            keyFrameAnimation.duration = 0.5
             
             helpView.layer.position = CGPoint(x: CGRectGetWidth(arrowView.bounds), y: CGRectGetHeight(arrowView.bounds)/2)
             helpView.layer.addAnimation(keyFrameAnimation, forKey: nil)
